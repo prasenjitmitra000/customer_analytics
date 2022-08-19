@@ -1,6 +1,6 @@
 view: orders {
   # # You can specify the table name if it's different from the view name:
-   sql_table_name:`bigquery-public-data.thelook_ecommerce.users`
+   sql_table_name:`bigquery-public-data.thelook_ecommerce.orders`
      ;;
 
    dimension: order_id {

@@ -10,5 +10,25 @@ datagroup: customer_analytics_default_datagroup {
 persist_with: customer_analytics_default_datagroup
 
 explore:  users {}
+explore:  products {}
 explore:  orders {}
-explore:  order_items {}
+explore:  order_items {
+  join: users {
+    view_label: "User"
+    type: left_outer
+    sql_on: ${order_items.user_id} = ${users.id}  ;;
+    relationship: many_to_one
+  }
+  join: orders {
+    view_label: "Order"
+    type: left_outer
+    sql_on: ${order_items.order_id} = ${orders.order_id}  ;;
+    relationship: many_to_one
+  }
+  join: products {
+    view_label: "Order"
+    type: left_outer
+    sql_on: ${order_items.product_id} = ${products.id}  ;;
+    relationship: many_to_one
+  }
+}

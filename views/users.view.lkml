@@ -80,5 +80,6 @@ view: users {
   measure: count {
     type: count
     drill_fields: []
+    html: @{big_number_format} ;;
   }
 }

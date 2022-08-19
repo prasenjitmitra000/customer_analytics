@@ -1,5 +1,5 @@
 view: order_items {
-  sql_table_name:`bigquery-public-data.thelook_ecommerce.users`
+  sql_table_name:`bigquery-public-data.thelook_ecommerce.order_items`
     ;;
 
   dimension: id {
@@ -60,6 +60,12 @@ view: order_items {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: sale_price_sum {
+    type: sum
+    sql: ${sale_price} ;;
+    html: @{big_money_format} ;;
   }
 
  }

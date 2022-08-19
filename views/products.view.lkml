@@ -1,5 +1,5 @@
 view: products {
-    sql_table_name: `bigquery-public-data.thelook_ecommerce.users`
+    sql_table_name: `bigquery-public-data.thelook_ecommerce.products`
       ;;
 
     dimension: id {
@@ -50,5 +50,6 @@ view: products {
     measure: count {
       type: count
       drill_fields: []
+      html: @{big_number_format} ;;
     }
   }
