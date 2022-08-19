@@ -10,3 +10,5 @@ datagroup: customer_analytics_default_datagroup {
 persist_with: customer_analytics_default_datagroup
 
 explore:  users {}
+explore:  orders {}
+explore:  order_items {}
