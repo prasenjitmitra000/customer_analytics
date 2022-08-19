@@ -12,24 +12,69 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
-  dimension: customer_id {
-    type: number
-    sql: ${TABLE}.CustomerID ;;
+  dimension: last_name {
+    type: string
+    sql: ${TABLE}.last_name ;;
   }
 
-  dimension: frequency {
-    type: number
-    sql: ${TABLE}.frequency ;;
+  dimension: email {
+    type: string
+    sql: ${TABLE}.email ;;
   }
 
-  dimension: monetary {
+  dimension: age {
     type: number
-    sql: ${TABLE}.monetary ;;
+    sql: ${TABLE}.age ;;
   }
 
-  dimension: recency {
+  dimension: gender {
+    type: string
+    sql: ${TABLE}.gender ;;
+  }
+
+  dimension: state {
+    type: string
+    sql: ${TABLE}.state ;;
+  }
+
+  dimension: street_address {
+    type: string
+    sql: ${TABLE}.street_address ;;
+  }
+
+  dimension: postal_code {
+    type: string
+    sql: ${TABLE}.postal_code ;;
+  }
+
+  dimension: city {
+    type: string
+    sql: ${TABLE}.city ;;
+  }
+
+  dimension: country {
+    type: string
+    sql: ${TABLE}.country ;;
+  }
+
+  dimension: latitude{
     type: number
-    sql: ${TABLE}.recency ;;
+    sql: ${TABLE}.latitude ;;
+  }
+
+  dimension: longitude {
+    type: number
+    sql: ${TABLE}.longitude ;;
+  }
+
+  dimension: traffic_source {
+    type: string
+    sql: ${TABLE}.traffic_source ;;
+  }
+
+  dimension: created_at {
+    type: date_time
+    sql: ${TABLE}.created_at ;;
   }
 
   measure: count {
