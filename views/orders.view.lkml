@@ -48,4 +48,9 @@ view: orders {
     sql: ${TABLE}.num_of_item ;;
   }
 
+  measure: count {
+    type: count
+    drill_fields: []
+  }
+
  }
