@@ -37,6 +37,27 @@ view: order_items {
     sql: EXTRACT(HOUR FROM ${TABLE}.created_at) ;;
   }
 
+  dimension: months {
+    type: number
+    sql: EXTRACT(MONTH FROM ${TABLE}.created_at) ;;
+  }
+  dimension: months_in_name {
+    type: string
+    sql: case when ${months} =1 then 'Jan'
+              when ${months} =2 then 'Feb'
+              when ${months} =3 then 'Mar'
+              when ${months} =4 then 'Apr'
+              when ${months} =5 then 'May'
+              when ${months} =6 then 'Jun'
+              when ${months} =7 then 'Jul'
+              when ${months} =8 then 'Aug'
+              when ${months} =9 then 'Sep'
+              when ${months} =10 then 'Oct'
+              when ${months} =11 then 'Nov'
+              when ${months} =12 then 'Dec' end
+    ;;
+  }
+
 
   dimension_group: created_at {
     type: time
