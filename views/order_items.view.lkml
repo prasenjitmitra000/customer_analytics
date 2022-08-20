@@ -32,8 +32,24 @@ view: order_items {
     sql: ${TABLE}.status ;;
   }
 
-  dimension: created_at {
-    type: date_time
+  dimension: hours {
+    type: number
+    sql: EXTRACT(HOUR FROM ${TABLE}.created_at) ;;
+  }
+
+
+  dimension_group: created_at {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    datatype: datetime
     sql: ${TABLE}.created_at ;;
   }
 
@@ -66,6 +82,12 @@ view: order_items {
     type: sum
     sql: ${sale_price} ;;
     html: @{big_money_format} ;;
+  }
+
+  measure: sale_price_sum_1 {
+    type: sum
+    sql: ${sale_price} ;;
+    value_format_name: usd_0
   }
 
  }

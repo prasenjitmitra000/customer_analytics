@@ -27,9 +27,16 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+  dimension: age_tier {
+    type: tier
+    tiers: [0, 10, 20, 30, 40, 50, 60, 70]
+    style: integer
+    sql: ${age} ;;
+  }
+
   dimension: gender {
     type: string
-    sql: ${TABLE}.gender ;;
+    sql: case when ${TABLE}.gender='M' then 'Male' when ${TABLE}.gender='F' then 'Female' end ;;
   }
 
   dimension: state {
@@ -55,6 +62,7 @@ view: users {
   dimension: country {
     type: string
     sql: ${TABLE}.country ;;
+    map_layer_name: countries
   }
 
   dimension: latitude{
