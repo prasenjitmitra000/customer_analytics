@@ -5,6 +5,7 @@ view: customer_segmentation_thelook_temp {
   dimension: cluster {
     type: number
     sql: ${TABLE}.cluster ;;
+
   }
 
   dimension: clv {
@@ -34,6 +35,14 @@ view: customer_segmentation_thelook_temp {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [customer_id, recency,  frequency,  monetary, clv]
+    #link: {
+    #  label: "Show as line plot" #or your label of choice
+    #  url: "
+    #  {% assign vis_config = '{
+    #  \"type\": \"looker_grid\"
+    #  }' %}
+    #  {{ link }}&vis_config={{ vis_config | encode_uri }}&toggle=dat,pik,vis&limit=5000"
+    #}
   }
 }

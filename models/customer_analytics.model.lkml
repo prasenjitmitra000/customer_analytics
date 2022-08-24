@@ -9,6 +9,7 @@ datagroup: customer_analytics_default_datagroup {
 
 persist_with: customer_analytics_default_datagroup
 
+explore:customer_segmentation_thelook_temp{}
 explore:  users {}
 explore:  products {}
 explore:  orders {}
@@ -26,9 +27,15 @@ explore:  order_items {
     relationship: many_to_one
   }
   join: products {
-    view_label: "Order"
+    view_label: "Product"
     type: left_outer
     sql_on: ${order_items.product_id} = ${products.id}  ;;
+    relationship: many_to_one
+  }
+  join: customer_segmentation_thelook_temp {
+    view_label: "Customer Segmentation"
+    type: left_outer
+    sql_on: ${customer_segmentation_thelook_temp.customer_id} = ${users.id}  ;;
     relationship: many_to_one
   }
 }
