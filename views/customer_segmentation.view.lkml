@@ -9,11 +9,13 @@ view: customer_segmentation {
 
   dimension: clv {
     type: number
+    value_format_name: decimal_2
     sql: ${TABLE}.clv ;;
   }
 
   dimension: customer_id {
-    type: number
+    type: string
+    #value_format_name: id
     sql: ${TABLE}.CustomerID ;;
   }
 
@@ -25,6 +27,7 @@ view: customer_segmentation {
   dimension: monetary {
     type: number
     sql: ${TABLE}.monetary ;;
+    html: @{big_money_format} ;;
   }
 
   dimension: recency {
