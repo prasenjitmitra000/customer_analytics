@@ -39,6 +39,6 @@ view: customer_segmentation {
 
   measure: count {
     type: count
-    drill_fields: [cluster_name]
+    drill_fields: [customer_id, recency, frequency, monetary, rfm_score, clv]
   }
 }
