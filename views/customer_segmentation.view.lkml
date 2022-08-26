@@ -16,7 +16,7 @@ view: customer_segmentation {
   dimension: customer_id {
     type: string
     #value_format_name: id
-    sql: ${TABLE}.CustomerID ;;
+    sql: cast(${TABLE}.CustomerID as string) ;;
   }
 
   dimension: frequency {
