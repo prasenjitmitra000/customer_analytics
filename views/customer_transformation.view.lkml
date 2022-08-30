@@ -27,7 +27,7 @@ view: customer_transformation {
   dimension: customer_id {
     type: number
     sql: ${TABLE}.CustomerID ;;
-
+    value_format_name: id
   }
 
   dimension: frequency_x {
