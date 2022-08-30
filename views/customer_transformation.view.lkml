@@ -4,11 +4,13 @@ view: customer_transformation {
 
   dimension: cluster_name_x {
     type: string
+    label: "Cluster Period 1"
     sql: ${TABLE}.Cluster_name_x ;;
   }
 
   dimension: cluster_name_y {
     type: string
+    label: "Cluster Period 2"
     sql: ${TABLE}.Cluster_name_y ;;
   }
 
@@ -25,6 +27,7 @@ view: customer_transformation {
   dimension: customer_id {
     type: number
     sql: ${TABLE}.CustomerID ;;
+
   }
 
   dimension: frequency_x {
@@ -59,12 +62,16 @@ view: customer_transformation {
 
   dimension: rfm_score_x {
     type: number
+    label: "Rfm Period 1"
     sql: ${TABLE}.RFM_Score_x ;;
+    value_format_name: decimal_2
   }
 
   dimension: rfm_score_y {
     type: number
+    label: "Rfm Period 2"
     sql: ${TABLE}.RFM_Score_y ;;
+    value_format_name: decimal_2
   }
 
   measure: count {
@@ -76,5 +83,6 @@ view: customer_transformation {
     type: count_distinct
     label: "Customer Id"
     sql: ${customer_id} ;;
+    drill_fields: [cluster_name_x,rfm_score_x,customer_id,cluster_name_y,rfm_score_y]
   }
 }
