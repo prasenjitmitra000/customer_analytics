@@ -9,10 +9,10 @@ project_name: "customer_analytics"
 constant: big_number_format {
   value: "
   {% if value < 0 %}
-  {% assign abs_value = value | times: -1.0 %}
+  {% assign abs_value = value  %}
   {% assign pos_neg = '-' %}
   {% else %}
-  {% assign abs_value = value | times: 1.0 %}
+  {% assign abs_value = value  %}
   {% assign pos_neg = '' %}
   {% endif %}
 
@@ -31,10 +31,10 @@ constant: big_number_format {
 constant: big_money_format {
   value: "
   {% if value < 0 %}
-  {% assign abs_value = value | times: -1.0 %}
+  {% assign abs_value = value  %}
   {% assign pos_neg = '-' %}
   {% else %}
-  {% assign abs_value = value | times: 1.0 %}
+  {% assign abs_value = value  %}
   {% assign pos_neg = '' %}
   {% endif %}
 
