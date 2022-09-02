@@ -102,7 +102,7 @@ view: order_items {
   measure: sale_price_sum {
     type: sum
     sql: ${sale_price} ;;
-    html: @{big_money_format} ;;
+    #html: @{big_money_format} ;;
   }
 
   measure: sale_price_sum_1 {

@@ -26,7 +26,7 @@ view: customer_segmentation {
 
   dimension: monetary {
     type: number
-    sql: ${TABLE}.monetary ;;
+    sql: cast(${TABLE}.monetary as int) ;;
     html: @{big_money_format} ;;
   }
 
@@ -38,6 +38,7 @@ view: customer_segmentation {
   dimension: rfm_score {
     type: number
     sql: ${TABLE}.RFM_Score ;;
+    value_format_name: decimal_2
   }
 
   measure: count {
