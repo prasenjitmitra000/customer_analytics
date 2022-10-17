@@ -11,7 +11,13 @@ persist_with: customer_analytics_default_datagroup
 
 
 explore:customer_segmentation_thelook_temp{}
-explore:customer_transformation{}
+explore:customer_transformation{
+  join: product_static_value {
+    type: left_outer
+    sql_on: ${customer_transformation.dummy_text} = ${product_static_value.dummy_text}  ;;
+    relationship: many_to_one
+  }
+}
 explore:  customer_segmentation {}
 explore:  users {}
 explore:  products {}

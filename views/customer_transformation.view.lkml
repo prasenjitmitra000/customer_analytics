@@ -1,11 +1,12 @@
 view: customer_transformation {
-  sql_table_name: `mi-4-305707.customer_analytics.customer_transformation`
+  sql_table_name: `mi-4-305707.customer_analytics.customer_transformation_1`
     ;;
 
   dimension: cluster_name_x {
     type: string
     label: "Cluster Period 1"
     sql: ${TABLE}.Cluster_name_x ;;
+
   }
 
   dimension: cluster_name_y {
@@ -74,6 +75,11 @@ view: customer_transformation {
     value_format_name: decimal_2
   }
 
+  dimension: dummy_text {
+    type: number
+    sql: ${TABLE}.dummy_text ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
@@ -84,5 +90,34 @@ view: customer_transformation {
     label: "Customer Id"
     sql: ${customer_id} ;;
     drill_fields: [cluster_name_x,rfm_score_x,customer_id,cluster_name_y,rfm_score_y]
+
+  }
+
+  measure: customer_id_measure_dashboard {
+    type: count_distinct
+    label: "Customer Id"
+    sql: ${customer_id} ;;
+    #drill_fields: [cluster_name_x,rfm_score_x,customer_id,cluster_name_y,rfm_score_y]
+    link: {
+      label: "Customer Details"
+      url: "{{ count_set_1._link }}"
+    }
+
+    link: {
+      label: "Insights"
+      url: "{{ count_set_2._link }}"
+    }
+  }
+
+  measure: count_set_1 {
+    type: count
+    drill_fields: [cluster_name_x,rfm_score_x,customer_id,cluster_name_y,rfm_score_y]
+    hidden: yes
+}
+
+  measure: count_set_2 {
+    type: count
+    drill_fields: [product_static_value.val]
+    hidden: yes
   }
 }
